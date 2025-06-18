@@ -15,5 +15,4 @@ class SignatureService(appProperties: AppProperties) {
         mac.init(secretKeySpec)
         return Base64.getEncoder().encodeToString(mac.doFinal(data.toByteArray()))
     }
-    fun verify(data: String, signature: String): Boolean = generate(data) == signature
 }

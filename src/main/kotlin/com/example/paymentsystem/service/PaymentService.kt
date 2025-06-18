@@ -11,8 +11,7 @@ import kotlin.random.Random
 
 @Service
 class PaymentService(
-    private val idempotencyService: IdempotencyService,
-    private val webhookClient: WebhookClient
+    private val idempotencyService: IdempotencyService, private val webhookClient: WebhookClient
 ) {
 
     @Async
@@ -39,9 +38,7 @@ class PaymentService(
         val status = if (isSuccess) "SUCCESS" else "FAILURE"
 
         return PaymentWebhookRequest(
-            orderUid = request.orderUid,
-            amount = request.amount,
-            status = status
+            orderUid = request.orderUid, amount = request.amount, status = status
         )
     }
 }

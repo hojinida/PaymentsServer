@@ -6,6 +6,5 @@ import org.springframework.stereotype.Component
 @Component
 @ConfigurationProperties(prefix = "app")
 data class AppProperties(
-    var webhookUrl: String = "",
-    var secretKey: String = ""
+    var webhookUrl: String = "", var secretKey: String = ""
 )

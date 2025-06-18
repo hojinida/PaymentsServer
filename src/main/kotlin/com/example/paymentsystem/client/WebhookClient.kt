@@ -19,13 +19,8 @@ class WebhookClient(
         val payloadJson = objectMapper.writeValueAsString(payload)
         val signature = signatureService.generate(payloadJson)
 
-        webClient.post()
-            .uri(uri)
-            .header("Content-Type", "application/json")
-            .header("X-Signature", signature)
-            .bodyValue(payloadJson)
-            .retrieve()
-            .toBodilessEntity()
+        webClient.post().uri(uri).header("Content-Type", "application/json")
+            .header("X-Signature", signature).bodyValue(payloadJson).retrieve().toBodilessEntity()
             .subscribe()
     }
 }
